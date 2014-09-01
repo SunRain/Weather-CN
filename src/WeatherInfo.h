@@ -9,7 +9,7 @@
 class CurrentWeatherModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(long dataUptime READ dataUptime CONSTANT)
+    Q_PROPERTY(QString dataUptime READ dataUptime CONSTANT)
     Q_PROPERTY(QString date READ date CONSTANT)
     Q_PROPERTY(QString humidity READ humidity CONSTANT)
     Q_PROPERTY(QString direct READ direct CONSTANT)
@@ -19,13 +19,13 @@ class CurrentWeatherModel : public QObject
     Q_PROPERTY(QString img READ img CONSTANT)
 public:
     explicit CurrentWeatherModel(QObject *parent = 0):QObject(parent) {}
-    static CurrentWeatherModel *create(const long dataUptime,
+    static CurrentWeatherModel *create(const QString& dataUptime,
                                        const QString& date, const QString& humidity, const QString& direct,
                                        const QString& power, const QString& temperature,
                                        const QString& info, const QString& img,
                                        QObject *parent = 0);
 
-    long dataUptime() const      {return m_dataUptime;}
+    QString dataUptime() const      {return m_dataUptime;}
     QString date() const         {return m_date;}
     QString humidity() const     {return m_humidity;}
     QString direct() const       {return m_direct;}
@@ -35,7 +35,7 @@ public:
     QString img() const          {return m_img;}
 
 private:
-    long m_dataUptime; //更新时间戳
+    QString m_dataUptime; //更新时间戳
     QString m_date; //时间
     QString m_humidity; //湿度
     QString m_direct; //风向
@@ -106,6 +106,38 @@ private:
     QString m_windPowerMoon;
 };
 
+//TODO: 暂时不使用这个类
+class  LifeInfoModel : public QObject
+{
+    Q_OBJECT
+public:
+    explicit LifeInfoModel(QObject *parent = 0) : QObject(parent) {}
+
+
+
+private:
+    QString m_kongtiao; //空调
+    QString m_yundong; //运动
+    QString m_ziwaixian; //紫外线
+    QString m_ganmao; //感冒
+    QString m_xiche; //洗车
+    QString m_wuran; //污染
+    QString m_chuanyi; //穿衣
+};
+
+//TODO: 暂时不使用这个类
+class PM25Model : public QObject
+{
+    Q_OBJECT
+public:
+    explicit PM25Model(QObject *parent = 0) : QObject(parent) {}
+
+private:
+    QString m_qualityStr;
+    int m_aqi;
+    int m_pm25;
+    QString m_advice;
+};
 
 class WeatherModel : public QObject
 {
@@ -114,7 +146,7 @@ class WeatherModel : public QObject
     //Q_PROPERTY(QList<QObject*> locationList READ locationList)
     Q_PROPERTY(QList<QObject*> weatherObjectList READ weatherObjectList)
     Q_PROPERTY(QObject* currentWeatherModel READ currentWeatherModel)
-    Q_PROPERTY(int pm25 READ pm25)
+    //Q_PROPERTY(int pm25 READ pm25)
 
 public:
     explicit WeatherModel(QObject *parent = 0) : QObject(parent) {}
@@ -125,20 +157,14 @@ public:
     //QList<QObject *> locationList() const                       {return m_locationList;}
     //void setLocationList(const QList<LocationResult *> &locationList)  {m_locationList = locationList;  }
 
-    QList<QObject *> weatherObjectList();
-    void setWeatherObjectList(const QList<WeatherObjectModel *> &weatherObjectList)
-    {
-        m_weatherObjectList = weatherObjectList;
-    }
+    QList<QObject *> weatherObjectList() const;
+    void setWeatherObjectList(const QList<WeatherObjectModel *> &weatherObjectList);
 
-    QObject *currentWeatherModel();
-    void setCurrentWeatherModel(CurrentWeatherModel *currentWeatherModel)
-    {
-        m_currentWeatherModel = currentWeatherModel;
-    }
+    QObject *currentWeatherModel() const;
+    void setCurrentWeatherModel(CurrentWeatherModel *currentWeatherModel);
 
-    int pm25() const                                                   {return m_pm25;}
-    void setPm25(int pm25)                                             {m_pm25 = pm25;}
+    //int pm25() const                                                   {return m_pm25;}
+    //void setPm25(int pm25)                                             {m_pm25 = pm25;}
 
 private:
     long m_time;

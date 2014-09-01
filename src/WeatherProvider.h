@@ -10,14 +10,18 @@
 class WeatherProvider : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QObject* weatherModel READ getWeatherModel)
 public:
     explicit WeatherProvider(QObject *parent = 0);
 
     Q_INVOKABLE void startFetchWeatherData(const QString& cityID);
+    QObject *getWeatherModel() const;
 
 protected:
     QString getAQIString(int aqi);
-    void parseWeaterObjList(const QJsonArray& array);
+    void parseToWeaterObjList(const QJsonArray& array);
+    void parseToCurrenWeatherModel(const QJsonObject& obj);
+
 signals:
     void fetchWeatherDataSucceed();
     void fetchWeatherDataFailed();

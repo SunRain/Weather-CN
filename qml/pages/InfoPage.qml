@@ -46,7 +46,6 @@ Page {
                 text: qsTr("About")
             }
             MenuItem {
-                //text: "\u53EB\u4EC0\u4E48\u540D"
                 text: qsTr("AddCity")
                 onClicked: {
                     //locationProvider.startFetchProvince();
@@ -57,8 +56,6 @@ Page {
                 }
             }
             MenuItem {
-                //text: qsTr("Show Page 2")
-                //onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
                 text: qsTr("Refresh")
             }
         }
@@ -94,6 +91,10 @@ Page {
 
         onFetchWeatherDataSucceed: {
             console.log("fetch weather data succeed");
+            //weatherProvider.weatherModel
+            console.log(weatherProvider.weatherModel.weatherObjectList[1])
+            console.log(weatherProvider.weatherModel.currentWeatherModel.info)
+
 
         }
     }
@@ -104,6 +105,14 @@ Page {
 
     WeatherProvider {
         id: weatherProvider
+    }
+
+    WeatherObjectModel {
+        id: weatherObjectModel
+    }
+
+    CurrentWeatherModel {
+        id: currentWeatherModel
     }
 }
 

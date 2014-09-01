@@ -38,7 +38,7 @@ WeatherInfo *WeatherInfo::creat(const QString &city, const QString &date,
 }
 
 
-CurrentWeatherModel *CurrentWeatherModel::create(const long dataUptime, const QString &date,
+CurrentWeatherModel *CurrentWeatherModel::create(const QString &dataUptime, const QString &date,
                                                 const QString &humidity,
                                                 const QString &direct, const QString &power,
                                                 const QString &temperature,
@@ -81,7 +81,7 @@ WeatherObjectModel *WeatherObjectModel::create(const QString &typeSun, const QSt
 
 
 
-QList<QObject *> WeatherModel::weatherObjectList()
+QList<QObject *> WeatherModel::weatherObjectList() const
 {
     QList<QObject *> objs;
     foreach (WeatherObjectModel *node, m_weatherObjectList) {
@@ -90,8 +90,18 @@ QList<QObject *> WeatherModel::weatherObjectList()
     return objs;
 }
 
-QObject *WeatherModel::currentWeatherModel()
+void WeatherModel::setWeatherObjectList(const QList<WeatherObjectModel *> &weatherObjectList)
+{
+        m_weatherObjectList = weatherObjectList;
+}
+
+QObject *WeatherModel::currentWeatherModel() const
 {
     QObject *obj = m_currentWeatherModel;
     return obj;
+}
+
+void WeatherModel::setCurrentWeatherModel(CurrentWeatherModel *currentWeatherModel)
+{
+            m_currentWeatherModel = currentWeatherModel;
 }
