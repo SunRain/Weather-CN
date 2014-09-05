@@ -20,6 +20,21 @@
     </message>
 </context>
 <context>
+    <name>Foo</name>
+    <message>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>tempMaxMin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pm25info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InfoPage</name>
     <message>
         <source>About</source>
@@ -31,14 +46,6 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>UI Template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

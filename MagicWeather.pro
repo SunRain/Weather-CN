@@ -34,7 +34,8 @@ OTHER_FILES += qml/MagicWeather.qml \
     qml/pages/ProvincePage.qml \
     qml/pages/CityPage.qml \
     qml/pages/TownPage.qml \
-    translations/MagicWeather-zh_CN.ts
+    translations/MagicWeather-zh_CN.ts \
+    qml/pages/Foo.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -50,4 +51,6 @@ HEADERS += \
     src/WeatherInfo.h \
     src/WeatherProvider.h \
     src/Utils.h
+
+RESOURCES +=
 
