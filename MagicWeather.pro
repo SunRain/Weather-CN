@@ -35,7 +35,37 @@ OTHER_FILES += qml/MagicWeather.qml \
     qml/pages/CityPage.qml \
     qml/pages/TownPage.qml \
     translations/MagicWeather-zh_CN.ts \
-    qml/pages/Foo.qml
+    qml/pages/Foo.qml \
+    weather_templet \
+    qml/images/wind.png \
+    qml/images/w30.png \
+    qml/images/w18.png \
+    qml/images/w17.png \
+    qml/images/w16.png \
+    qml/images/w15.png \
+    qml/images/w13_14.png \
+    qml/images/w11_12.png \
+    qml/images/w10.png \
+    qml/images/w9.png \
+    qml/images/w8.png \
+    qml/images/w7.png \
+    qml/images/w5_6.png \
+    qml/images/w4.png \
+    qml/images/w3.png \
+    qml/images/w2_s.png \
+    qml/images/w2_m.png \
+    qml/images/w1_s.png \
+    qml/images/w1_m.png \
+    qml/images/right_arrow.png \
+    qml/images/one_round.png \
+    qml/images/left_arrow.png \
+    qml/images/l.png \
+    qml/images/humidity.png \
+    qml/images/h.png \
+    qml/images/air.png \
+    qml/images/add.png \
+    qml/images/01.png \
+    qml/js/lunar.js
 
 # to disable building translations every time, comment out the
 # following CONFIG line

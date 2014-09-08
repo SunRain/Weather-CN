@@ -1,6 +1,6 @@
 
 #include "WeatherInfo.h"
-
+/*
 WeatherInfo::WeatherInfo(QObject *parent)
     : QObject(parent)
 {
@@ -36,7 +36,7 @@ WeatherInfo *WeatherInfo::creat(const QString &city, const QString &date,
     info->m_sunset = sunSetTime;
     return info;
 }
-
+*/
 
 CurrentWeatherModel *CurrentWeatherModel::create(const QString &dataUptime, const QString &date,
                                                 const QString &humidity,

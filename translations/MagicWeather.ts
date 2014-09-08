@@ -48,6 +48,10 @@
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Refresh error or no city added!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProvincePage</name>

@@ -4,9 +4,14 @@
 #include <QJsonParseError>
 #include <QJsonDocument>
 #include <QJsonValue>
+#include <QDir>
+#include <QStandardPaths>
 
 #include "WeatherProvider.h"
 #include "Utils.h"
+
+static const char *CONFIG_PATH = "SunRain/MagicWeather";
+static const char *CONFIG_File = "config.json";
 
 WeatherProvider::WeatherProvider(QObject *parent) :
     QObject(parent)
@@ -20,14 +25,23 @@ WeatherProvider::WeatherProvider(QObject *parent) :
 //http://tq.360.cn/api/weatherquery/query?code=101190501&app=tq360&_jsonp=renderData
 void WeatherProvider::startFetchWeatherData(const QString &cityID)
 {
-    qDebug()<<"===== start startFetchWeatherData" <<cityID;
-
     if (m_replay) {
         m_replay->disconnect();
         m_replay->abort();
         m_replay->deleteLater();
     }
-    QUrl url (QString("http://tq.360.cn/api/weatherquery/query?code=%1&app=tq360&_jsonp=renderData").arg(cityID));
+    
+    QString id;
+    if (cityID.isEmpty() || cityID.isNull()) {
+        id = getLastWeatherCityId();
+    } else {
+        id = cityID;
+        saveLastWeatherCityId(id);
+    }
+    
+    qDebug()<<"===== start startFetchWeatherData" <<id;
+    
+    QUrl url (QString("http://tq.360.cn/api/weatherquery/query?code=%1&app=tq360&_jsonp=renderData").arg(id));
     m_replay = m_network->get(QNetworkRequest(url));
     connect(m_replay, SIGNAL(finished()),this, SLOT(slotFinishFetchWeatherData()));
 }
@@ -165,6 +179,63 @@ void WeatherProvider::parseToCurrenWeatherModel(const QJsonObject &obj)
     m_weatherModel->setCurrentWeatherModel(model);
 }
 
+void WeatherProvider::saveLastWeatherCityId(const QString &cityId)
+{
+    QDir dir (QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
+    if (!dir.mkpath(QString(CONFIG_PATH))) {
+        return;
+    }
+    if (!dir.cd(QString(CONFIG_PATH))) {
+        return;
+    }
+    
+    QString filePath = dir.absoluteFilePath(QString(CONFIG_File));
+    
+    qDebug()<<"========== save city ID "<<cityId<<"to file "<<filePath;
+
+    QJsonObject obj;
+    obj.insert("cityId", cityId);
+
+    QJsonDocument doc (obj);
+    QFile file (filePath);
+    if (!file.open(QIODevice::WriteOnly)) {
+        qDebug()<<"======== write file fail";
+        return;
+    }
+
+    file.write(doc.toJson(QJsonDocument::Compact));
+    file.close();
+}
+
+QString WeatherProvider::getLastWeatherCityId()
+{
+    QDir dir (QStandardPaths::writableLocation(QStandardPaths::ConfigLocation));
+    if (!dir.mkpath(QString(CONFIG_PATH))) {
+        return QString();
+    }
+    if (!dir.cd(QString(CONFIG_PATH))) {
+        return QString();
+    }
+    
+    QString filePath = dir.absoluteFilePath(QString(CONFIG_File));
+    
+    QFile file (filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug()<<"======== read file fail";
+        return QString();
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    file.close();
+
+    QJsonObject obj = doc.object();
+    QJsonValue value = obj.value("cityId");
+    if (value.isUndefined()) {
+        return QString();
+    }
+    return value.toString();
+}
+
 
 void WeatherProvider::slotFinishFetchWeatherData()
 {
@@ -210,6 +281,10 @@ void WeatherProvider::slotFinishFetchWeatherData()
             parseToWeaterObjList(Utils::getJsonArray("weather", jsonObject));
             //获取实时天气
             parseToCurrenWeatherModel(Utils::getSubJsonObject("realtime", jsonObject));
+            
+            QJsonArray array = Utils::getJsonArray("area", jsonObject);
+            QJsonValue value = array.at(array.size()-1);
+            m_weatherModel->setAreaName(value.toArray().at(0).toString());
         }
     } else {
         qDebug() <<"===error  paser json array";

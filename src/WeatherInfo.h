@@ -147,15 +147,16 @@ class WeatherModel : public QObject
     Q_PROPERTY(QList<QObject*> weatherObjectList READ weatherObjectList)
     Q_PROPERTY(QObject* currentWeatherModel READ currentWeatherModel)
     //Q_PROPERTY(int pm25 READ pm25)
+    Q_PROPERTY(QString areaName READ areaName)
 
 public:
     explicit WeatherModel(QObject *parent = 0) : QObject(parent) {}
 
-    long time() const                                                  {return m_time;}
+    long time() const           /* 更新时间 */                          {return m_time;}
     void setTime(long time)                                            {m_time = time;}
-
-    //QList<QObject *> locationList() const                       {return m_locationList;}
-    //void setLocationList(const QList<LocationResult *> &locationList)  {m_locationList = locationList;  }
+    
+    QString areaName() const    /* 天气显示地区 */                       {return m_areaName;}
+    void setAreaName(const QString& name)                              {m_areaName = name;}
 
     QList<QObject *> weatherObjectList() const;
     void setWeatherObjectList(const QList<WeatherObjectModel *> &weatherObjectList);
@@ -172,9 +173,10 @@ private:
     QList<WeatherObjectModel *> m_weatherObjectList;
     CurrentWeatherModel *m_currentWeatherModel;
     int m_pm25;
+    QString m_areaName;
 };
 
-
+/*
 class WeatherInfo :  public QObject
 {
     Q_OBJECT
@@ -244,6 +246,6 @@ private:
     QString m_sunset;
     
 };
-
+*/
 
 #endif // WEATHERINFO_H
