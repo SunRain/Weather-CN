@@ -52,6 +52,42 @@
         <source>Refresh error or no city added!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>UpdateTime: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PM25 : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kongtiao : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>yundong : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ziwaixian : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ganmao : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>xiche : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>wuran : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>chuanyi : </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProvincePage</name>

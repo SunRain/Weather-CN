@@ -65,7 +65,8 @@ OTHER_FILES += qml/MagicWeather.qml \
     qml/images/air.png \
     qml/images/add.png \
     qml/images/01.png \
-    qml/js/lunar.js
+    qml/js/lunar.js \
+    qml/js/Utils.js
 
 # to disable building translations every time, comment out the
 # following CONFIG line

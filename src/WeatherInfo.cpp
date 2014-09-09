@@ -103,5 +103,58 @@ QObject *WeatherModel::currentWeatherModel() const
 
 void WeatherModel::setCurrentWeatherModel(CurrentWeatherModel *currentWeatherModel)
 {
-            m_currentWeatherModel = currentWeatherModel;
+    m_currentWeatherModel = currentWeatherModel;
+}
+
+QObject *WeatherModel::lifeInfoModel() const
+{
+    QObject *obj = m_lifeInfoModel;
+    return obj;
+}
+
+void WeatherModel::setLifeInfoModel(LifeInfoModel *lifeInfoModel)
+{
+    m_lifeInfoModel = lifeInfoModel;
+}
+
+QObject *WeatherModel::getPM25Model() const
+{
+    QObject *obj = m_pm25Model;
+    return obj;
+}
+
+void WeatherModel::setPM25Model(PM25Model *model)
+{
+    m_pm25Model = model;
+}
+
+
+LifeInfoModel *LifeInfoModel::create(const QString &kongtiao,
+                                     const QString &yundong,
+                                     const QString &ziwaixian, 
+                                     const QString &ganmao, 
+                                     const QString &xiche,
+                                     const QString &wuran, 
+                                     const QString &chuanyi,
+                                     QObject *parent)
+{
+    LifeInfoModel *model = new LifeInfoModel(parent);
+    model->m_kongtiao = kongtiao;
+    model->m_yundong = yundong;
+    model->m_ziwaixian = ziwaixian;
+    model->m_ganmao = ganmao;
+    model->m_xiche = xiche;
+    model->m_wuran = wuran;
+    model->m_chuanyi = chuanyi;
+    return model;
+}
+
+PM25Model *PM25Model::create(const QString &quality, const QString &advice, const QString &aqi, const QString &pm25, QObject *parent)
+{
+    PM25Model *model = new PM25Model(parent);
+    model->m_qualityStr = quality;
+    model->m_advice = advice;
+    model->m_aqi = aqi;
+    model->m_pm25 = pm25;
+    return model;
 }

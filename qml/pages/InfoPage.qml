@@ -34,6 +34,7 @@ import Sailfish.Silica 1.0
 import com.sunrain.magicweather 1.0
 
 import "../js/lunar.js" as LunarHandler
+import "../js/Utils.js" as Utils
 
 Page {
     id: infopage
@@ -42,6 +43,24 @@ Page {
     property int baseWidth: screenWidth/20
     property int baseHeight: screenWidth/20
     property int runningBusyIndicator: 1
+    
+    property string cityNameStr
+    property string updateTimeStr
+    property string tempNumStr
+    property string tempMaxMinStr
+    property string pm25Str
+    property string currentWeatherInfoStr
+    property string dateStr
+    property string lunarStr
+    property string kongtiaoStr
+    property string yundongStr
+    property string ziwaixianStr
+    property string ganmaoStr
+    property string xicheStr
+    property string wuranStr
+    property string chuanyiStr
+    
+    property url weatherIconUrl
     
     Loader{
         id:viewLoader
@@ -133,7 +152,7 @@ Page {
                 MenuItem {
                     text: qsTr("Refresh")
                     onClicked: {
-                        runningBusyIndicator = 1;
+                        refreshWeatherDate();
                     }
                 }
             }
@@ -154,8 +173,8 @@ Page {
                     width: parent.width
                     height: Theme.fontSizeSmall*3
                     Label {
-                        id: cityName
-                        text: "CityName"
+                        id: city
+                        text: cityNameStr
                         horizontalAlignment: Text.AlignLeft
                         verticalAlignment: Text.AlignBottom
                         color: Theme.primaryColor 
@@ -169,15 +188,14 @@ Page {
                         
                     }
                     
-                    //TODO:由于目前是每次开启程序的时候都更新数据,没有缓存到本地,所以不需要在主界面显示是多久前更新的天气数据
-                    /*Label {
+                    Label {
                         id: updateTime
-                        text: "updateTime"
-                        height: cityName.height
+                        text: updateTimeStr
+                        height: city.height
                         horizontalAlignment: Text.AlignRight
                         verticalAlignment: Text.AlignBottom
                         anchors{
-                            left: cityName.right
+                            left: city.right
                             leftMargin: baseWidth *4
                             top:parent.top
                             topMargin: Theme.fontSizeSmall
@@ -185,7 +203,7 @@ Page {
                         color: Theme.primaryColor 
                         font.pixelSize:Theme.fontSizeTiny
                         
-                    }*/
+                    }
                 }
                 
                 Item{
@@ -207,13 +225,13 @@ Page {
                                 verticalCenterOffset: -baseWidth
                                 verticalCenter: parent.verticalCenter
                             }
-                            //text: "36"
+                            text: tempNumStr
                             font.pixelSize: Theme.fontSizeMedium * 10
                         }
                         
                         Label {
                             id: tempMaxMin
-                            //text: "tempMaxMin"
+                            text: tempMaxMinStr
                             anchors{
                                 left: parent.left
                                 top: tempNum.bottom
@@ -227,12 +245,12 @@ Page {
                         
                         Label {
                             id: pm25
-                            //text: "PM25Info"
+                            text: pm25Str
                             horizontalAlignment: Text.AlignRight
                             verticalAlignment: Text.AlignVCenter
                             anchors{
                                 left: tempMaxMin.right
-                                //leftMargin: baseWidth
+                                leftMargin: baseWidth
                                 top: tempNum.bottom
                             }
                             //anchors.topMargin: -baseHeight*2
@@ -263,7 +281,7 @@ Page {
                         
                         Label {
                             id: currentWeatherInfo
-                            //text: "currentWeatherInfo"
+                            text: currentWeatherInfoStr
                             anchors.top: tempDot.bottom
                             anchors.topMargin: baseHeight
                             font.pixelSize: Theme.fontSizeMedium
@@ -271,7 +289,7 @@ Page {
                         
                         Label {
                             id: date
-                            //text: "date"
+                            text: dateStr
                             anchors.top: currentWeatherInfo.bottom
                             anchors.topMargin: baseHeight
                             font.pixelSize: Theme.fontSizeMedium
@@ -281,8 +299,8 @@ Page {
                             id: lunar
                             anchors.top:date.bottom
                             anchors.topMargin: baseHeight
-                            //text: "lunar"
-                            font.pixelSize: Theme.fontSizeMedium
+                            text: lunarStr
+                            font.pixelSize: Theme.fontSizeTiny*2/3
                         }
                     }
                 }
@@ -294,13 +312,13 @@ Page {
                     id:weatherIconInfo
                     width: headerBar.width
                     height: 315
-
+                    
                     //TODO:need to fit the icon size
                     Item{
                         id:leftArrow
                         width: 72
                         height: parent.height
-
+                        
                         anchors.top: parent.top
                         anchors.left: parent.left
                         
@@ -335,7 +353,7 @@ Page {
                         Image {
                             id:weatherIconImage
                             anchors.centerIn: parent
-                            //source: "../images/w4.png"
+                            source: weatherIconUrl//"../images/w4.png"
                         }
                     }
                     
@@ -343,7 +361,7 @@ Page {
                         id:rightArrow
                         width: 72
                         height: parent.height
-
+                        
                         anchors.left: weatherIcon.right
                         anchors.top: parent.top
                         anchors.leftMargin:(screenWidth-300-72*2)/4// 48
@@ -368,58 +386,118 @@ Page {
                     id: lifeInfo
                     
                     width: headerBar.width
-                    height: 400
+                    height: lifeColumn.height
                     
-                    Label {
-                        id:kongtiao
-                        anchors.top: parent.top
+                    Column {
+                        id:lifeColumn
+                        spacing: Theme.paddingSmall
                         
-                        color: "#00FF00"
-                        text: "kongtiao\nInfo ..............."
-                    }
-                    Label {
-                        id: yundong
-                        anchors.top: kongtiao.bottom
-                        
-                        color: "steelblue"
-                        
-                        text: "yundong\nInfo ............"
-                    }
-                    Label {
-                        id:ziwaixian
-                        anchors.top: yundong.bottom
-                        
-                        text: "ziwaixian\nInfo..............."
-                    }
-                    Label {
-                        id:ganmao
-                        anchors.top:ziwaixian.bottom
-                        
-                        color: "steelblue"
-                        
-                        text: "ganmao\nInfo ......."
-                    }
-                    Label {
-                        id: xiche
-                        anchors.top: ganmao.bottom
-                        
-                        text: "xiche"
-                    }
-                    Label {
-                        id:wuran
-                        anchors.top:xiche.bottom
-                        
-                        color: "steelblue"
-                        
-                        text: "wuran"
-                    }
-                    Label {
-                        id: chuanyi
-                        anchors.top: wuran.bottom
-                        
-                        color: "steelblue"
-                        
-                        text: "chuanyi"
+                        Label {
+                            id:kongtiao
+
+                            color: "#00FF00"
+                            text: kongtiaoStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id: yundong
+
+                            color: "steelblue"
+                            
+                            text: yundongStr
+
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id:ziwaixian
+
+                            text: ziwaixianStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id:ganmao
+                            color: "steelblue"
+                            
+                            text: ganmaoStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id: xiche
+
+                            color: "#00FF00"
+                            text: xicheStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id:wuran
+
+                            color: "steelblue"
+                            
+                            text: wuranStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
+                        Label {
+                            id: chuanyi
+
+                            text: chuanyiStr
+                            wrapMode: Text.Wrap
+                            
+                            font.pixelSize: Theme.fontSizeTiny
+                            
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingMedium
+                            }
+                        }
                     }
                 }
                 
@@ -437,6 +515,7 @@ Page {
             
             runningBusyIndicator = 0;
             
+            viewLoader.sourceComponent = viewLoader.Null;
             viewLoader.sourceComponent = errorPage;
             
         }
@@ -445,9 +524,10 @@ Page {
             console.log("fetch weather data succeed");
             runningBusyIndicator = 0;
             
-            viewLoader.sourceComponent = weatherView;
-            
             setWeatherData();
+            
+            viewLoader.sourceComponent = viewLoader.Null;
+            viewLoader.sourceComponent = weatherView;
         }
     }
     
@@ -467,14 +547,66 @@ Page {
         id: currentWeatherModel
     }
     
+    LifeInfoModel {
+        id:lifeInfoModel
+    }
+    
+    PM25Model {
+        id:pm25Model
+    }
+    
     function startFetchWeatherData() {
         weatherProvider.startFetchWeatherData("");
     }
     
+    function refreshWeatherDate() {
+        viewLoader.sourceComponent = viewLoader.Null
+        viewLoader.sourceComponent = busyIndicator;
+        runningBusyIndicator = 1;
+        startFetchWeatherData();
+    }
+
     function setWeatherData() {
-        //TODO:由于目前是每次开启程序的时候都更新数据,没有缓存到本地,所以不需要在主界面显示是多久前更新的天气数据
-       //var lastUpdateTime = Math.round(new Date().getTime()/1000);
-        cityName.text = weatherProvider.weatherModel.areaName;
+        updateTimeStr = qsTr("UpdateTime: ") + weatherProvider.weatherModel.time;
+        cityNameStr = weatherProvider.weatherModel.areaName;
+        tempNumStr = weatherProvider.weatherModel.currentWeatherModel.temperature;
+        tempMaxMinStr = weatherProvider.weatherModel.weatherObjectList[0].tempL + " ~ " +
+                weatherProvider.weatherModel.weatherObjectList[0].tempH;
+        
+        pm25Str = qsTr("PM25 : ");
+        pm25Str += weatherProvider.weatherModel.getPM25Model.getPM25;
+        currentWeatherInfoStr = weatherProvider.weatherModel.currentWeatherModel.info;
+        dateStr = weatherProvider.weatherModel.currentWeatherModel.date;
+        
+        var lunarTmp =  weatherProvider.weatherModel.currentWeatherModel.date;
+        lunarTmp = lunarTmp.split("-");
+        lunarStr = LunarHandler.lunarStr(lunarTmp[0] + lunarTmp[1] + lunarTmp[2]);
+        
+        weatherIconUrl = "../images/";
+        weatherIconUrl += Utils.getWeatherIconName(weatherProvider.weatherModel.currentWeatherModel.img);
+        
+        console.log("img url is " + weatherIconUrl);
+        
+        kongtiaoStr = qsTr("kongtiao : ");
+        kongtiaoStr += weatherProvider.weatherModel.lifeInfoModel.kongtiao;
+        
+        yundongStr = qsTr("yundong : ");
+        yundongStr += weatherProvider.weatherModel.lifeInfoModel.yundong;
+        
+        ziwaixianStr = qsTr("ziwaixian : ")
+        ziwaixianStr +=  weatherProvider.weatherModel.lifeInfoModel.ziwaixian;
+        
+        ganmaoStr  = qsTr("ganmao : ")
+        ganmaoStr += weatherProvider.weatherModel.lifeInfoModel.ganmao;
+        
+        xicheStr = qsTr("xiche : ")
+        xicheStr += weatherProvider.weatherModel.lifeInfoModel.xiche;
+        
+        wuranStr = qsTr("wuran : ")
+        wuranStr += weatherProvider.weatherModel.lifeInfoModel.wuran;
+        
+        chuanyiStr = qsTr("chuanyi : ")
+        chuanyiStr += weatherProvider.weatherModel.lifeInfoModel.chuanyi;       
     }
 }
 

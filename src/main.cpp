@@ -61,10 +61,10 @@ int main(int argc, char *argv[])
     qmlRegisterType<CurrentWeatherModel>("com.sunrain.magicweather", 1, 0, "CurrentWeatherModel");
     qmlRegisterType<WeatherObjectModel>("com.sunrain.magicweather", 1, 0, "WeatherObjectModel");
     qmlRegisterType<WeatherModel>("com.sunrain.magicweather", 1, 0, "WeatherModel");
-
+    qmlRegisterType<LifeInfoModel>("com.sunrain.magicweather", 1, 0, "LifeInfoModel");
+    qmlRegisterType<PM25Model>("com.sunrain.magicweather", 1, 0, "PM25Model");
+    
     qmlRegisterType<WeatherProvider>("com.sunrain.magicweather", 1, 0, "WeatherProvider");
-
-
 
    return SailfishApp::main(argc, argv);
 

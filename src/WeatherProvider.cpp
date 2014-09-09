@@ -175,8 +175,69 @@ void WeatherProvider::parseToCurrenWeatherModel(const QJsonObject &obj)
             <<"]";
 
     CurrentWeatherModel *model =
-            CurrentWeatherModel::create(dataUptime, date, humidity, direct, power, temperature, info, img);
+            CurrentWeatherModel::create(dataUptime, date, humidity, direct, power, temperature, info, img, this);
     m_weatherModel->setCurrentWeatherModel(model);
+}
+
+void WeatherProvider::parseToLifeInfoModel(const QJsonObject &obj)
+{
+    QString kongtiao, yundong, ziwaixian, ganmao, xiche, wuran, chuanyi;
+    QJsonObject o = obj.value("info").toObject();
+
+    QJsonArray array = o.value("kongtiao").toArray();
+    kongtiao = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("yundong").toArray();
+    yundong = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("ziwaixian").toArray();
+    ziwaixian = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("ganmao").toArray();
+    ganmao = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("xiche").toArray();
+    xiche = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("wuran").toArray();
+    wuran = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    array = o.value("chuanyi").toArray();
+    chuanyi = array.at(0).toString() + "\n" + array.at(1).toString("N/A");
+    
+    qDebug()<<"parset LifeInfoMode to "
+           <<kongtiao<<"  "
+             <<yundong<<"  "
+               <<ziwaixian<<"  "
+                 <<ganmao<<"  "
+                   <<xiche<<"  "
+                     <<wuran<<"  "
+                       <<chuanyi;
+    
+    LifeInfoModel *model = 
+            LifeInfoModel::create(kongtiao,yundong,ziwaixian,ganmao,xiche,wuran,chuanyi,this);
+    m_weatherModel->setLifeInfoModel(model);
+}
+
+void WeatherProvider::parseToPM25Model(const QJsonObject &obj)
+{
+    qDebug()<<"parset parseToPM25Model to " << obj.toVariantMap();
+    
+    QString quality,advice, aqi,pm25;
+    
+    quality = obj.value("quality").toString("N/A");
+    advice = obj.value("advice").toString("N/A");
+    aqi = obj.value("aqi").toString("N/A");
+    pm25 = obj.value("pm25").toString("N/A");
+    
+    qDebug()<<"parset parseToPM25Model to "
+           <<quality<<"  "
+             <<advice<<"  "
+               <<aqi<<"  "
+                 <<pm25;
+    
+    PM25Model *model = PM25Model::create(quality, advice, aqi, pm25, this);
+    m_weatherModel->setPM25Model(model);
 }
 
 void WeatherProvider::saveLastWeatherCityId(const QString &cityId)
@@ -273,14 +334,19 @@ void WeatherProvider::slotFinishFetchWeatherData()
             QJsonObject jsonObject = doc.object();
 
             //获取时间
-            m_weatherModel->setTime(Utils::getLong("dataUptime", Utils::getSubJsonObject("realtime", jsonObject)));
-
+            //m_weatherModel->setTime(Utils::getLong("dataUptime", Utils::getSubJsonObject("realtime", jsonObject)));
+            m_weatherModel->setTime(Utils::getSubJsonObject("realtime", jsonObject).value("time").toString());
+            
             qDebug()<<"dataUptime is "<<m_weatherModel->time();
-
+            
             //获取天气详情列表
             parseToWeaterObjList(Utils::getJsonArray("weather", jsonObject));
             //获取实时天气
             parseToCurrenWeatherModel(Utils::getSubJsonObject("realtime", jsonObject));
+            
+            parseToLifeInfoModel(Utils::getSubJsonObject("life", jsonObject));
+            
+            parseToPM25Model(Utils::getSubJsonObject("pm25", jsonObject));
             
             QJsonArray array = Utils::getJsonArray("area", jsonObject);
             QJsonValue value = array.at(array.size()-1);

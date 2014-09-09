@@ -21,6 +21,8 @@ protected:
     QString getAQIString(int aqi);
     void parseToWeaterObjList(const QJsonArray& array);
     void parseToCurrenWeatherModel(const QJsonObject& obj);
+    void parseToLifeInfoModel(const QJsonObject& obj);
+    void parseToPM25Model(const QJsonObject& obj);
     void saveLastWeatherCityId(const QString& cityId);
     QString getLastWeatherCityId();
 
