@@ -35,6 +35,9 @@
 //#include <QtDeclarative/QDeclarativeView>
 //#include<QtDeclarative/QDeclarativeContext>
 
+#include <QQmlEngine>
+#include <QtQuick>
+
 #include <sailfishapp.h>
 
 #include "LocationProvider.h"
