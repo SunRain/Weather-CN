@@ -1,5 +1,5 @@
-Name: MagicWeather
-Summary: My SailfishOS Application
+Name: harbour-magicweather
+Summary: Chinese weather app for Sailfish OS
 Version: 0.1
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
@@ -12,7 +12,7 @@ License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my SailfishOS Application
+  Chinese weather app for Sailfish OS
 Configure: none
 # The qtc5 builder inserts macros to allow QtCreator to have fine
 # control over qmake/make execution
@@ -36,8 +36,14 @@ Requires:
 
 # All installed files
 Files:
-  - '%{_bindir}'
+  - '%defattr(644,root,root,755)' # default permissions for all files and folders
+  - /usr/share/harbour-magicweather
+  - /usr/share/icons/hicolor/86x86/apps
+  - /usr/share/applications
+  - /usr/bin
+  - '%attr(755,root,root) %{_bindir}/%{name}' # permission to run the exeutable
   - '%{_datadir}/%{name}'
+  - '%{_datadir}/%{name}/qml'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 

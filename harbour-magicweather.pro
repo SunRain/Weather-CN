@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = MagicWeather
+TARGET = harbour-magicweather
 
 CONFIG += sailfishapp
 
@@ -22,19 +22,15 @@ SOURCES += \
     src/main.cpp \
     src/Utils.cpp
 
-OTHER_FILES += qml/MagicWeather.qml \
+OTHER_FILES += \
     qml/cover/CoverPage.qml \
     qml/pages/SecondPage.qml \
     rpm/MagicWeather.changes.in \
-    rpm/MagicWeather.spec \
-    rpm/MagicWeather.yaml \
     translations/*.ts \
-    MagicWeather.desktop \
     qml/pages/InfoPage.qml \
     qml/pages/ProvincePage.qml \
     qml/pages/CityPage.qml \
     qml/pages/TownPage.qml \
-    translations/MagicWeather-zh_CN.ts \
     qml/pages/Foo.qml \
     weather_templet \
     qml/images/wind.png \
@@ -66,15 +62,20 @@ OTHER_FILES += qml/MagicWeather.qml \
     qml/images/add.png \
     qml/images/01.png \
     qml/js/lunar.js \
-    qml/js/Utils.js
+    qml/js/Utils.js \
+    harbour-magicweather.desktop \
+    rpm/harbour-magicweather.spec \
+    rpm/harbour-magicweather.yaml \
+    qml/harbour-magicweather.qml \
+    harbour-magicweather.png \
+    translations/harbour-magicweather-zh_CN.ts
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
-    translations/MagicWeather.ts
-    translations/MagicWeather-de.ts
-    translations/MagicWeather-zh_CN.ts
+    translations/harbour-magicweather.ts
+    translations/harbour-magicweather-zh_CN.ts
 
 HEADERS += \
     src/ProvinceListModel.h \

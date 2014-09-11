@@ -38,6 +38,8 @@
 #include <QQmlEngine>
 #include <QtQuick>
 
+#include <QtDebug>
+
 #include <sailfishapp.h>
 
 #include "LocationProvider.h"
@@ -57,6 +59,9 @@ int main(int argc, char *argv[])
 
     //return SailfishApp::main(argc, argv);
 
+    //QGuiApplication *app = SailfishApp::application(argc, argv);
+    
+    
     //qmlRegisterType<LocationResult>("com.sunrain.magicweather",1,0,"LocationResult");
     qmlRegisterType<LocationResult>("com.sunrain.magicweather",1,0,"LocationResult");
     qmlRegisterType<LocationProvider>("com.sunrain.magicweather", 1, 0, "LocationProvider");
@@ -69,6 +74,16 @@ int main(int argc, char *argv[])
     
     qmlRegisterType<WeatherProvider>("com.sunrain.magicweather", 1, 0, "WeatherProvider");
 
+    QString locale = QLocale::system().name();
+    qDebug()<<"=== local is "<<locale;//<<"         dir is "<<app->applicationDirPath();
+    //QTranslator translator;
+    //translator.load(QString("harbour-magicweather_%1").arg(locale));//,app->applicationDirPath());
+    
+   // app->installTranslator(&translator);
+    //return app->exec();
+    //app->exec();
+    //SailfishApp
+    
    return SailfishApp::main(argc, argv);
 
 }
