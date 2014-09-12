@@ -74,7 +74,7 @@ OTHER_FILES += \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
-    translations/harbour-magicweather.ts
+    translations/harbour-magicweather.ts \
     translations/harbour-magicweather-zh_CN.ts
 
 HEADERS += \

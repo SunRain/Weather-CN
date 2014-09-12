@@ -6,12 +6,12 @@
     <message>
         <location filename="../qml/pages/CityPage.qml" line="77"/>
         <source>error</source>
-        <translation>错误</translation>
+        <translation>错误！</translation>
     </message>
     <message>
         <location filename="../qml/pages/CityPage.qml" line="84"/>
         <source>error page !</source>
-        <translation>错误页面!!</translation>
+        <translation>错误</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="38"/>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -33,17 +33,17 @@
         <location filename="../qml/pages/Foo.qml" line="232"/>
         <location filename="../qml/pages/Foo.qml" line="243"/>
         <source>Text</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/Foo.qml" line="96"/>
         <source>tempMaxMin</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/Foo.qml" line="110"/>
         <source>pm25info</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -63,7 +63,7 @@
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="99"/>
         <source>Refresh error or no city added!</source>
-        <translation>刷新错误,可能没有城市数据!</translation>
+        <translation>刷新数据错误，可能还没有添加城市！</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="153"/>
@@ -78,22 +78,22 @@
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="576"/>
         <source>PM25 : </source>
-        <translation>PM25：</translation>
+        <translation>PM2.5：</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="590"/>
         <source>kongtiao : </source>
-        <translation>空调：</translation>
+        <translation>空调指数：</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="593"/>
         <source>yundong : </source>
-        <translation>运动：</translation>
+        <translation>运动指数：</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="596"/>
         <source>ziwaixian : </source>
-        <translation>紫外线：</translation>
+        <translation>紫外线指数：</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="599"/>
@@ -108,12 +108,12 @@
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="605"/>
         <source>wuran : </source>
-        <translation>污染：</translation>
+        <translation>污染指数：</translation>
     </message>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="608"/>
         <source>chuanyi : </source>
-        <translation>穿衣：</translation>
+        <translation>穿衣指数：</translation>
     </message>
 </context>
 <context>
@@ -126,7 +126,7 @@
     <message>
         <location filename="../qml/pages/ProvincePage.qml" line="61"/>
         <source>error page !</source>
-        <translation>错误！！</translation>
+        <translation>错误！</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProvincePage.qml" line="82"/>
@@ -139,12 +139,12 @@
     <message>
         <location filename="../qml/pages/SecondPage.qml" line="42"/>
         <source>Nested Page</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/SecondPage.qml" line="49"/>
         <source>Item</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -157,7 +157,7 @@
     <message>
         <location filename="../qml/pages/TownPage.qml" line="82"/>
         <source>error page !</source>
-        <translation>错误</translation>
+        <translation>错误！</translation>
     </message>
 </context>
 <context>
@@ -165,32 +165,32 @@
     <message>
         <location filename="../src/WeatherProvider.cpp" line="60"/>
         <source>aqi2to50</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/WeatherProvider.cpp" line="62"/>
         <source>aqi50to100</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/WeatherProvider.cpp" line="64"/>
         <source>aqi100to150</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/WeatherProvider.cpp" line="66"/>
         <source>aqi150to200</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/WeatherProvider.cpp" line="68"/>
         <source>aqi200to300</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/WeatherProvider.cpp" line="70"/>
         <source>aqi300to400</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
