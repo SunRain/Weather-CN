@@ -68,7 +68,9 @@ OTHER_FILES += \
     rpm/harbour-magicweather.yaml \
     qml/harbour-magicweather.qml \
     harbour-magicweather.png \
-    translations/harbour-magicweather-zh_CN.ts
+    translations/harbour-magicweather-zh_CN.ts \
+    qml/pages/AboutPage.qml
+
 
 # to disable building translations every time, comment out the
 # following CONFIG line

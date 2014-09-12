@@ -2,6 +2,74 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="16"/>
+        <source>About Weather</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <source>ChineseWeather</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <source>Written by learning qml</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <source>Author:wanggjghost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="81"/>
+        <source>E-mail:41245110@qq.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="101"/>
+        <source>Github: https://github.com/SunRain/Weather-CN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="128"/>
+        <source>Credit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="146"/>
+        <source>FineDay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <source>Author:sd6352051</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="179"/>
+        <source>Github: https://github.com/sd6352051</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="201"/>
+        <source>JS Lunar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="214"/>
+        <source>Author:FlyingFishBird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="233"/>
+        <source>Github: https://github.com/FlyingFishBird</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CityPage</name>
     <message>
         <location filename="../qml/pages/CityPage.qml" line="77"/>
@@ -50,68 +118,68 @@
     <name>InfoPage</name>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="79"/>
-        <location filename="../qml/pages/InfoPage.qml" line="140"/>
+        <location filename="../qml/pages/InfoPage.qml" line="143"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="82"/>
-        <location filename="../qml/pages/InfoPage.qml" line="143"/>
+        <location filename="../qml/pages/InfoPage.qml" line="85"/>
+        <location filename="../qml/pages/InfoPage.qml" line="149"/>
         <source>AddCity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="99"/>
+        <location filename="../qml/pages/InfoPage.qml" line="102"/>
         <source>Refresh error or no city added!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="153"/>
+        <location filename="../qml/pages/InfoPage.qml" line="159"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="570"/>
+        <location filename="../qml/pages/InfoPage.qml" line="576"/>
         <source>UpdateTime: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="576"/>
+        <location filename="../qml/pages/InfoPage.qml" line="582"/>
         <source>PM25 : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="590"/>
+        <location filename="../qml/pages/InfoPage.qml" line="596"/>
         <source>kongtiao : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="593"/>
+        <location filename="../qml/pages/InfoPage.qml" line="599"/>
         <source>yundong : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="596"/>
+        <location filename="../qml/pages/InfoPage.qml" line="602"/>
         <source>ziwaixian : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="599"/>
+        <location filename="../qml/pages/InfoPage.qml" line="605"/>
         <source>ganmao : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="602"/>
+        <location filename="../qml/pages/InfoPage.qml" line="608"/>
         <source>xiche : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="605"/>
+        <location filename="../qml/pages/InfoPage.qml" line="611"/>
         <source>wuran : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="608"/>
+        <location filename="../qml/pages/InfoPage.qml" line="614"/>
         <source>chuanyi : </source>
         <translation type="unfinished"></translation>
     </message>

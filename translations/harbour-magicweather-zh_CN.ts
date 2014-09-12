@@ -2,6 +2,74 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="16"/>
+        <source>About Weather</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="38"/>
+        <source>ChineseWeather</source>
+        <translation>中文天气应用</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="56"/>
+        <source>Written by learning qml</source>
+        <translation>学习QML的练习之作</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="70"/>
+        <source>Author:wanggjghost</source>
+        <translation>作者：wanggjghost（泪の单翼天使）</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="81"/>
+        <source>E-mail:41245110@qq.com</source>
+        <translation>E-Mail：41245110@qq.com</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="101"/>
+        <source>Github: https://github.com/SunRain/Weather-CN</source>
+        <translation>源码地址：https://github.com/SunRain/Weather-CN</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="128"/>
+        <source>Credit</source>
+        <translation>致谢</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="146"/>
+        <source>FineDay</source>
+        <translation>FineDay</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="159"/>
+        <source>Author:sd6352051</source>
+        <translation>作者：sd6352051</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="179"/>
+        <source>Github: https://github.com/sd6352051</source>
+        <translation>Github：https://github.com/sd6352051</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="201"/>
+        <source>JS Lunar</source>
+        <translation>JS农历代码</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="214"/>
+        <source>Author:FlyingFishBird</source>
+        <translation>作者：FlyingFishBird</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="233"/>
+        <source>Github: https://github.com/FlyingFishBird</source>
+        <translation>Github：https://github.com/FlyingFishBird</translation>
+    </message>
+</context>
+<context>
     <name>CityPage</name>
     <message>
         <location filename="../qml/pages/CityPage.qml" line="77"/>
@@ -50,68 +118,68 @@
     <name>InfoPage</name>
     <message>
         <location filename="../qml/pages/InfoPage.qml" line="79"/>
-        <location filename="../qml/pages/InfoPage.qml" line="140"/>
+        <location filename="../qml/pages/InfoPage.qml" line="143"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="82"/>
-        <location filename="../qml/pages/InfoPage.qml" line="143"/>
+        <location filename="../qml/pages/InfoPage.qml" line="85"/>
+        <location filename="../qml/pages/InfoPage.qml" line="149"/>
         <source>AddCity</source>
         <translation>添加城市</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="99"/>
+        <location filename="../qml/pages/InfoPage.qml" line="102"/>
         <source>Refresh error or no city added!</source>
         <translation>刷新数据错误，可能还没有添加城市！</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="153"/>
+        <location filename="../qml/pages/InfoPage.qml" line="159"/>
         <source>Refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="570"/>
+        <location filename="../qml/pages/InfoPage.qml" line="576"/>
         <source>UpdateTime: </source>
         <translation>更新于：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="576"/>
+        <location filename="../qml/pages/InfoPage.qml" line="582"/>
         <source>PM25 : </source>
         <translation>PM2.5：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="590"/>
+        <location filename="../qml/pages/InfoPage.qml" line="596"/>
         <source>kongtiao : </source>
         <translation>空调指数：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="593"/>
+        <location filename="../qml/pages/InfoPage.qml" line="599"/>
         <source>yundong : </source>
         <translation>运动指数：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="596"/>
+        <location filename="../qml/pages/InfoPage.qml" line="602"/>
         <source>ziwaixian : </source>
         <translation>紫外线指数：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="599"/>
+        <location filename="../qml/pages/InfoPage.qml" line="605"/>
         <source>ganmao : </source>
         <translation>感冒指数：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="602"/>
+        <location filename="../qml/pages/InfoPage.qml" line="608"/>
         <source>xiche : </source>
         <translation>洗车：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="605"/>
+        <location filename="../qml/pages/InfoPage.qml" line="611"/>
         <source>wuran : </source>
         <translation>污染指数：</translation>
     </message>
     <message>
-        <location filename="../qml/pages/InfoPage.qml" line="608"/>
+        <location filename="../qml/pages/InfoPage.qml" line="614"/>
         <source>chuanyi : </source>
         <translation>穿衣指数：</translation>
     </message>
